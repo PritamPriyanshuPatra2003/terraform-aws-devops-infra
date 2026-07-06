@@ -3,10 +3,7 @@
 *.tfstate.*
 
 # Terraform cache
-.terraform/
-
-# Terraform lock file
-.terraform.lock.hcl
+.terraform
 
 # Variable files containing secrets
 *.tfvars
