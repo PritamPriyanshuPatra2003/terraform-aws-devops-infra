@@ -1,79 +1,57 @@
 # Terraform AWS DevOps Infrastructure
 
-## Overview
+This project provisions a secure AWS infrastructure on Amazon Web Services (AWS) using Terraform following Infrastructure as Code (IaC) principles.
 
-This project provisions a complete AWS infrastructure using Terraform following Infrastructure as Code (IaC) principles.
-
-The architecture consists of a public frontend server running Apache HTTP Server and a private backend server hosted inside a private subnet. The backend is isolated from the internet while still being able to access external repositories through a NAT Gateway.
+The infrastructure consists of a frontend Apache web server hosted in a public subnet and a backend MongoDB server hosted in a private subnet. The backend is isolated from direct internet access while maintaining outbound connectivity through a NAT Gateway.
 
 ---
 
 ## Architecture
 
-```
-                   Internet
-                       │
-               Internet Gateway
-                       │
-              Public Route Table
-                       │
-               Public Subnet
-                       │
-          Frontend EC2 (Apache)
-                       │
-             Frontend Security Group
-                       │
-        -------------------------------
-                       │
-              Private Route Table
-                       │
-                 NAT Gateway
-                       │
-               Private Subnet
-                       │
-          Backend EC2 (Private)
-                       │
-             Backend Security Group
-```
+<p align="center">
+  <img src="assets/architecture.png" alt="AWS Architecture Diagram" width="100%">
+</p>
 
 ---
 
 ## AWS Services Used
 
 - Amazon VPC
+- Amazon EC2
 - Public & Private Subnets
 - Internet Gateway
 - NAT Gateway
 - Elastic IP
 - Route Tables
 - Security Groups
-- EC2
 - Amazon Linux 2023
-- Apache HTTP Server
 - Terraform
 
 ---
 
 ## Features
 
-- Infrastructure as Code using Terraform
-- Public and Private Network Architecture
-- Secure Backend Deployment
-- Automatic Apache Installation using User Data
-- Security Group based communication
-- Internet access for private subnet using NAT Gateway
+- Infrastructure as Code (Terraform)
+- Secure VPC Architecture
+- Public & Private Subnet Design
+- Internet Gateway for Public Resources
+- NAT Gateway for Private Subnet Internet Access
+- Frontend Apache Web Server
+- Backend MongoDB Server
+- Security Group Based Access Control
 - Terraform Outputs
 
 ---
 
 ## Project Structure
 
-```
+```text
 terraform/
-│
 ├── provider.tf
 ├── ami.tf
 ├── vpc.tf
+├── subnet.tf
+├── igw.tf
 ├── nat-gateway.tf
 ├── private-route-table.tf
 ├── security-group.tf
@@ -96,35 +74,8 @@ terraform apply
 
 ---
 
-## Outputs
-
-Terraform prints:
-
-- Frontend Public IP
-- Frontend URL
-- Backend Private IP
-- VPC ID
-
----
-
-## Skills Demonstrated
-
-- AWS Networking
-- Terraform
-- Infrastructure as Code
-- VPC Design
-- EC2 Provisioning
-- Security Groups
-- NAT Gateway
-- Route Tables
-- Linux Automation
-- Apache Web Server
-
----
-
 ## Author
 
 **Pritam Priyanshu Patra**
 
-GitHub:
-https://github.com/PritamPriyanshuPatra2003
+GitHub: https://github.com/PritamPriyanshuPatra2003
